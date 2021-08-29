@@ -21,4 +21,14 @@
         android:layout_height="wrap_content"
         android:text="Go Other Space"/>
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="전달할 내용 입력"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="메시지 화면에 내용 전달하기"/>
+
 </LinearLayout>
