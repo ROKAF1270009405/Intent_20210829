@@ -21,11 +21,15 @@ class MainActivity : AppCompatActivity() {
             //메세지조회화면으로 (입력한 내용을 들고) 이동
 
             val myIntent = Intent(this,ViewMessageActivity::class.java)
+
+            myIntent.putExtra("inputMessage", inputContent)
+
             startActivity(myIntent)
 
         }
 
         moveToOtherBtn.setOnClickListener {
+
 
             //clicked moveToOtherBtn??
 
