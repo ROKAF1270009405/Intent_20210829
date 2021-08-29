@@ -16,9 +16,14 @@ class OtherActivity : AppCompatActivity() {
 
             //Intent를 이용, 메인으로 이동
 
-            val otherIntent = Intent(this, MainActivity::class.java)
+            //val otherIntent = Intent(this, MainActivity::class.java)
 
-            startActivity(otherIntent)
+            //startActivity(otherIntent)
+
+
+            //지금 보고 있는 다른 화면을 종료처리
+
+            finish()
 
         }
     }
