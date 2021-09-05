@@ -3,6 +3,7 @@ package com.neppplus.intent_20210829
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -64,4 +65,42 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+//      startActivityForResult를 통해서 이동화면에서 -> 메인화면으로 복귀하면 실행시켜주는 함수.
+//      완료를 누르건, 취소를 누르건 무조건 실행되는 함수. -> 이 두 상황을 구별하자.
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        Toast.makeText(this, "결과를 가지고 돌아옴", Toast.LENGTH_SHORT).show()
+
+//      1. requestCode : Int -> startActivityForResult에 넣어준 숫자값이 뭐였는가?
+//        => 어디를 다녀온건지 알려주는 역할
+//        =? 이번에 다녀온게, 닉네임을 받으러 다녀온건지? 상황에 맞는 코드.
+
+        if(requestCode == REQUEST_CODE_FOR_NICKNAME) {
+
+//        2. resultCode: Int -> 돌아올때, RESULT_OK를 갖고왔는지, 취소값으로 갖고왔는지.
+//            => 확인을 누른게 맞는지 구별의 근거자료.
+
+            if(resultCode == RESULT_OK) {
+
+//                닉네임 -> OK 까지 한 상황.
+//                받아온 닉네임 값을 텍스트뷰에 반영.
+//                data 변수에 -> resultIntent가 담겨 있는 상황.
+//                -> 갖고 있는 String 하나를 꺼내라고 하자.
+
+                val newNickname = data?.getStringExtra("newNickname")
+
+                nicknameTxt.text = newNickname
+
+
+            }
+
+
+        }
+
+
+    }
+
 }
