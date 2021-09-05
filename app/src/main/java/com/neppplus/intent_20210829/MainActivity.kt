@@ -1,6 +1,7 @@
 package com.neppplus.intent_20210829
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -13,6 +14,23 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+//        전화 걸기 (DIAL) Intent 활용 예시.
+
+        dialBtn.setOnClickListener {
+
+//            전화번호를 받아오자.
+            val inputPhoneNum = phoneNumEdt.text.toString()
+
+//            어디에 전화를 걸지 알려주는 정보로(Uri) 가공.
+            val myUri = Uri.parse("tel:${inputPhoneNum}") // tel:입력한번호 형태로 가공.
+
+//            전화 화면으로 이동 + 어디에 걸지 (Uri) 조합 -> Intent
+            val myIntent = Intent( Intent.ACTION_DIAL, myUri)
+            startActivity(myIntent)
+
+        }
+
 
         editNicknameBtn.setOnClickListener {
 
